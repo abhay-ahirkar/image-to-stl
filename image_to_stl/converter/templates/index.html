@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image to STL Converter</title>
+</head>
+<body>
+    <h1>Image to STL Converter</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="image">Upload an image:</label>
+        <input type="file" name="image" id="image"><br><br>
+        <input type="submit" value="Convert">
+    </form>
+    {% if stl %}
+    <h2>Download the STL file:</h2>
+    <a href="{{ stl.stl.url }}" download="{{ stl.name }}">{{ stl.name }}</a>
+    {% endif %}
+</body>
+</html>
